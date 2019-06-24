@@ -40,7 +40,7 @@ class WeatherService {
     return delta >= Duration.millisecondsPerHour;
   }
 
-  Future<Data> getCurrent() async {
+  Future<Data> getCurrent({bool isUpdateRequest: false}) async {
     if (this._data == null) {
       await _loadCache();
     }

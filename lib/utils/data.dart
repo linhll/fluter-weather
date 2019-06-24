@@ -16,6 +16,7 @@ class Data {
   Cloud cloud;
   DateTime time;
   Sun sys;
+  Map rain;
 
   Data() {
     coord = new Coord();
@@ -40,7 +41,13 @@ class Data {
     this.time =
         DateTime.fromMillisecondsSinceEpoch((map['dt'] * 1.0).round() * 1000);
     this.cloud = Cloud.fromJson(map['clouds']);
-    this.sys = Sun.fromJson(map['sys']);
+    var sys = Sun.fromJson(map['sys']);
+    if (sys != null && sys.sunset != null && sys.sunrise != null) {
+      this.sys = sys;
+    } else {
+      this.sys = null;
+    }
+    this.rain = map['rain'];
   }
 
   Map toJson() {
@@ -53,6 +60,7 @@ class Data {
       "dt": this.time.millisecondsSinceEpoch / 1000,
       "clouds": this.cloud.toJson(),
       "sys": this.sys == null ? null : this.sys.toJson(),
+      "rain": this.rain ?? null,
     };
   }
 
@@ -64,5 +72,7 @@ class Data {
     this.wind = other.wind;
     this.time = other.time;
     this.cloud = other.cloud;
+    this.sys = other.sys;
+    this.rain = other.rain;
   }
 }

@@ -28,7 +28,7 @@ class ForecastItem extends StatelessWidget {
                 children: [
                   Text(StringUtil.getDateDM(data.time),
                       style: defaultTextStyle),
-                  Text(StringUtil.getTimeHHMM(data.time),
+                  Text(StringUtil.getTimehhmm(data.time),
                       style: defaultTextStyle),
                 ],
               ),

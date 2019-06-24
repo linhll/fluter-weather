@@ -65,7 +65,7 @@ class HeadWidget extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(StringUtil.getTimeHHMM(data.time),
+                                Text(StringUtil.getTimehhmm(data.time),
                                     style: defaultTextStyle),
                                 Text("Gió: ${data.wind.speed} m/s",
                                     style: defaultTextStyle),
